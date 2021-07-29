@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const Material = require("../models/Material");
 
-// Adicionar novo Material
+// Adiciona novo Material
 router.post("/", async (req, res) => {
   try {
     const newMaterial = new Material({
@@ -18,7 +18,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Retorna todos os materiais
+// Retorna todos os materiais ou busca pela query ?descricao=
 router.get("/", async (req, res) => {
   try {
     let materiais = await Material.find();
@@ -33,7 +33,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Deleta todos os Materiais da Tabela
+// Deleta todos os materiais
 router.delete("/deletar-todos", async (req, res) => {
   try {
     await Material.deleteMany();
@@ -43,7 +43,7 @@ router.delete("/deletar-todos", async (req, res) => {
   }
 });
 
-//GET PRODUTO BY ID
+// Retorna o material com o id do parametro
 router.get("/:id", async (req, res) => {
   try {
     let material = await Material.findById(req.params.id);
@@ -54,7 +54,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-//UPDATE PRODUTO BY ID
+// Edita o material com o id do parametro
 router.put("/:id", async (req, res) => {
   try {
     const updatedMaterial = await Material.findByIdAndUpdate(
@@ -70,7 +70,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-//DELETE PRODUTO BY ID
+// Delete o material com o id do parametro
 router.delete("/:id", async (req, res) => {
   try {
     await Material.findByIdAndDelete(req.params.id);

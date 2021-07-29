@@ -10,7 +10,8 @@ const imagenRoute = require("./routes/imagen");
 
 // Acesso das informações do arquivo .env
 dotenv.config();
-// Configurando o cors para permitir acesso na porta 8080
+
+// Configurando o cors para permitir acesso na porta 8080 na mesma origem
 app.use(cors({ origin: "*", credentials: true }));
 
 // Iniciando a coneção com o MongoDB

@@ -3,7 +3,7 @@ const multer = require("multer");
 const multerConfig = require("../config/multer");
 const Imagen = require("../models/Imagen");
 
-// Adicionar novo Imagen
+// Adiciona nova Imagen
 router.post("/", multer(multerConfig).single("file"), async (req, res) => {
   const {
     originalname: name,
@@ -24,12 +24,14 @@ router.post("/", multer(multerConfig).single("file"), async (req, res) => {
   }
 });
 
+// Retorna todas imagens
 router.get("/", async (req, res) => {
   const imagens = await Imagen.find();
 
   return res.json(imagens);
 });
 
+// Deleta todas imagens
 router.delete("/", async (req, res) => {
   const imagen = await Imagen.deleteMany();
   return res.send(imagen);

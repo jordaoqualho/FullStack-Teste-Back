@@ -4,6 +4,7 @@ const crypto = require("crypto");
 const aws = require("aws-sdk");
 const multerS3 = require("multer-s3");
 
+// Definição da coneção com o S3 da Amazon para upload de imagens
 const storageTypes = {
   s3: multerS3({
     s3: new aws.S3({
@@ -25,6 +26,7 @@ const storageTypes = {
   }),
 };
 
+// Definição de parametros de entrada do multer
 module.exports = {
   dest: path.resolve(__dirname, "..", "..", "tmp", "uploads"),
   storage: storageTypes["s3"],
