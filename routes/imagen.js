@@ -18,7 +18,7 @@ router.post("/", multer(multerConfig).single("file"), async (req, res) => {
       key,
       url,
     });
-    res.json(newImagen);
+    res.json(newImagen.url);
   } catch (err) {
     res.json(err);
   }
@@ -32,7 +32,7 @@ router.get("/", async (req, res) => {
 
 router.delete("/", async (req, res) => {
   const imagen = await Imagen.deleteMany();
-  return res.send();
+  return res.send(imagen);
 });
 
 module.exports = router;
